@@ -15,5 +15,12 @@ Um **Jogo da Velha** clássico com um toque épico de *One Piece*! Desafie um am
 - **Recursos**: Imagens temáticas do universo de *One Piece*
 
 ## 🚀 Como Jogar
+1. Clone o repositório:
    ```bash
-   git clone [https://github.com/felipepaixaodn/tic-tac-toe-one-piece.git](https://github.com/felipepaixaodn/tic-tac-toe-onepiece.git)
+   git clone https://github.com/felipepaixaodn/tic-tac-toe-onepiece.git
+2. Abra o arquivo index.html no navegador.
+3. Escolha "Luffy" ou "Nami" e comece a aventura no tabuleiro!
+
+
+## 📸 Captura de Tela
+![Tic Tac Toe One Piece](screenshot.png)
