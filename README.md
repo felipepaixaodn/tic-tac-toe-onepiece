@@ -16,4 +16,4 @@ Um **Jogo da Velha** clássico com um toque épico de *One Piece*! Desafie um am
 
 ## 🚀 Como Jogar
    ```bash
-   git clone https://github.com/felipepaixaodn/tic-tac-toe-one-piece.git
+   git clone [https://github.com/felipepaixaodn/tic-tac-toe-one-piece.git](https://github.com/felipepaixaodn/tic-tac-toe-onepiece.git)
