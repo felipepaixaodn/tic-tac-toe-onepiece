@@ -1,0 +1,181 @@
+* {
+    box-sizing: border-box; /*width = conteúdo + padding + borda (tudo junto!).*/
+    margin: 0; 
+    padding: 0;
+    
+}
+body {
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    background: linear-gradient(90deg, 
+        rgb(202, 0, 0) 0%,
+        rgb(255, 136, 0) 100%);
+    display: flex;
+    flex-direction: column; /* empilha verticalmente */
+    align-items: center; /* centraliza horizontalmente */
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    justify-content: center; /* centraliza o board verticalmente */
+    width: 100%;
+}
+
+.board {
+    display: grid; /*propiedade padrão do grid */
+    width: 100%; /* largura*/ 
+    height: 100%;/*altura*/
+    justify-content: center; /*alinhando todas as linhas verticais no centro*/
+    align-content: center; /*alinhando todas as linhas horizontais no centro*/
+    align-items: center; /*alinhando os items em verticais no centro*/
+    justify-items: center; /*alinhando os items em horizontais no centro*/
+    grid-template-columns: repeat(3, auto); /* fazendo  as colunas se ajustarem dinamicamente ao conteúdo.*/
+}
+
+.board.luffy .cell:not(.luffy):not(.nami):hover::before,
+.board.nami .cell:not(.nami):not(.luffy):hover::before {
+    opacity: 0.5; /* Imagem semi-transparente */
+}
+    
+/* celula*/
+.cell {
+    width: 100px;
+    height: 100px;
+    border: 2px solid whitesmoke; /*alterando a cor da borda*/
+    display: flex; /*ativa o flexbox*/
+    justify-content: center;
+    align-items: center;
+}
+
+.cell.luffy,
+.cell.nami {
+    cursor:not-allowed /* Exibe um ícone de "proibido" (círculo com barra) */
+}
+
+.cell:nth-child(1), /*está selecionado elemento especifico dentro do grupo de items(celula)*/
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: none; /* Remove borda superior das 3 primeiras células*/
+}
+
+
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7) {
+    border-left: none;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9) {
+    border-bottom: none;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9) {
+    border-right: none;
+}
+/* x */
+.cell.luffy {
+    position: relative; /* Necessário para posicionar a imagem */
+}
+
+.cell.luffy::before,
+ /*Pseudo-elementos(elementos fantasmas)são ferramentas visuais do CSS para adicionar ou estilizar partes de um elemento sem modificar o HTML.*/
+/*o ::before e o ::after são exemplos de pseudo-elementos.*/
+.board.luffy .cell:not(.luffy):not(.nami):hover::before { /* o hover faz com que o estilo apenas quando o mouse está em cima e combinado com o :not, faz com que so apareça estilos aonde esta vazio.*/
+    content: ""; /* Obrigatório para pseudo-elementos, mesmo vazio */
+    position: absolute; /* Permite posicionar sobre a célula */
+    width: 80px; /* Largura da imagem (ajuste conforme necessário) */
+    height: 80px; /* Altura da imagem (deve ser quadrada para não distorcer) */
+    background-image: url("luffy.png"); /* Caminho da imagem */
+    background-size: contain; /* Mantém proporção sem cortar a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    background-position: center; /* Centraliza a imagem na célula */
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.3)); /* Sombra sutil para melhor contraste */
+}
+
+/*Circle*/
+.cell.nami {
+    position: relative; /* Necessário para posicionar a imagem */
+}
+
+.cell.nami::before,
+.board.nami .cell:not(.nami):not(.luffy):hover::before {
+    content: ""; /* Obrigatório para pseudo-elementos, mesmo vazio */
+    position: absolute; /* Permite posicionar sobre a célula */
+    width: 80px; /* Largura da imagem (ajuste conforme necessário) */
+    height: 80px; /* Altura da imagem (deve ser quadrada para não distorcer) */
+    background-image: url("nami.png"); /* Caminho da imagem */
+    background-size: contain; /* Mantém proporção sem cortar a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    background-position: center; /* Centraliza a imagem na célula */
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.3)); /* Sombra sutil para melhor contraste */
+}
+
+
+
+
+/* ========== MENSAGEM DE VITÓRIA (POPUP) ========== */
+.winning-message {
+    display: none; /* Inicialmente oculto (será ativado via JavaScript) */
+    position: fixed; /* Fixo na tela, independente do scroll */
+    top: 0; /* Cobre toda a área da tela */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center; /* Centraliza horizontalmente (flexbox) */
+    align-items: center; /* Centraliza verticalmente (flexbox) */
+    background-color: rgba(0,0,0,0.8); /* Fundo preto com 80% de opacidade */
+    flex-direction: column; /* Organiza os filhos em coluna (um abaixo do outro) */
+}
+
+/* ========== BOTÃO DA MENSAGEM ========== */
+.winning-message-button {
+    font-size: 2rem; /* Tamanho do texto */
+    background-color: rgb(202, 0, 0); /* Vermelho escuro */
+    padding: 7px 12px; /* Espaçamento interno (vertical/horizontal) */
+    cursor: pointer; /* Muda o cursor para "mãozinha" */
+    border-radius: 3px; /* Bordas arredondadas */
+    border: none; /* Remove borda padrão */
+    margin-top: 16px; /* Espaço acima do botão */
+    color: white; /* Texto branco */
+}
+
+/* ===== EFEITO HOVER (QUANDO O MOUSE PASSA POR CIMA) ===== */
+.winning-message-button:hover {
+    color: rgb(202, 0, 0); /* Texto fica vermelho */
+    background-color: white; /* Fundo fica branco */
+}
+
+/* ========== TEXTO DA MENSAGEM ========== */
+.winning-message-text {
+    color: white; /* Texto branco */
+    font-size: 3.5rem; /* Tamanho grande (3.5x o tamanho padrão) */
+}
+
+.show-winning-message {
+    display: flex;
+}
+
+/* Estiliza o título do jogo */
+.titulo {
+    color: #ffcc00; /* Cor amarela (você pode trocar por qualquer cor: red, blue, green, etc) */
+    font-size: 2.5rem; /* Tamanho da fonte */
+    text-align: center; /* Centraliza no topo */
+    margin-bottom: 20px; /* Espaço entre o título e o tabuleiro */
+    font-family: 'One Piece Font', sans-serif; /* Opcional: fonte personalizada */
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.3)); /* Sombra sutil para melhor contraste */
+}
+
+.emoji {
+    width: 70px;
+    height: 70px;
+    vertical-align: middle; /* alinha com o texto */
+    margin-right: 10px; /* espaço entre a imagem e o texto */
+}

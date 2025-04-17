@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe One piece</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body> 
+    <h1 class="titulo">Tic Tac Toc One Piece<img src="chapeu.png" alt="Luffy" class="emoji"> 
+      </h1>
+      <div class="main-container">
+    <!-- Tabuleiro do jogo com 9 células (3x3) -->
+    <div class="board" data-board>
+        <!-- Cada célula é um quadrado do jogo. O atributo data-cell é usado no JS para selecionar -->
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+    </div>
+
+    <!-- Área que exibe a mensagem de vitória ou empate -->
+    <div class="winning-message" data-winning-message>
+        <!-- Texto da mensagem que será alterado via JavaScript -->
+        <p class="winning-message-text" data-winning-message-text>Luffy Venceu!</p>
+
+        <!-- Botão para reiniciar o jogo, com data attribute usado no JS -->
+        <button class="winning-message-button" data-restart-button>Reiniciar!</button>
+    </div>
+
+    <!-- Importa o script principal do jogo (JavaScript) -->
+    <script src="./script.js"></script>
+</body>
+</html>
