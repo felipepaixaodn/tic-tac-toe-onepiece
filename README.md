@@ -1,4 +1,4 @@
-# 🔴☠️Tic Tac Toe One Piece☠️🟡
+# Tic Tac Toe One Piece 🎩☠️
 
 Um **Jogo da Velha** clássico com um toque épico de *One Piece*! Desafie um amigo para dominar o tabuleiro 3x3 e veja se você tem o que precisa para gritar "Luffy Venceu!" 🏴‍☠️
 
